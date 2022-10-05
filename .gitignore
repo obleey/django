@@ -1,15 +1,16 @@
 # Python
 *.pyc
 *~
-__pycache__
-
+/api/__pycache__
+/mysite/__pycache__
+/workevidence/migrations/__pycache__
 # Env
 .env
 myvenv/
 venv/
 
 # Database
-db.sqlite3
+/db.sqlite3
 
 # Static folder at project root
 /static/
