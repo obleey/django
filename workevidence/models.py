@@ -21,5 +21,5 @@ class WorkEvidence(models.Model):
     work_date = models.DateTimeField(blank=True, null=True)
  
     def __str__(self):
-        return self.work_date
+        return self.worker.first_name
 
