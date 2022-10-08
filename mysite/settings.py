@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'workevidence',
     'reversion',
     'django_filters',
+    'django_celery_results',
+    'django_celery_beat'
+
 ]
 
 MIDDLEWARE = [
@@ -136,4 +139,28 @@ LOGOUT_URL = 'logout'
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': "mysite.urls.api_exception_handler"
 }
+
+#Broker je iz dockerja - poženeš docker run -d -p 5672:5672 rabbitmq
+CELERY_BROKER_URL = 'amqp://guest@localhost:5672//'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Belgrade'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'
+CELERY_BEAT_SCHEDULER='django_celery_beat.schedulers:DatabaseScheduler'
+
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+#add your host of the email here in this case its Gmail so we are going to use Gmail host
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+#add the port number of the email server
+EMAIL_PORT = 587
+#add your gamil here
+EMAIL_HOST_USER = 'miha.oblishar@gmail.com'
+#add your password here
+EMAIL_HOST_PASSWORD = 'gybdhrqmlfttbpeq'
+DEFAULT_FROM_EMAIL='Celery <support@workevidence.com>'
+
 

@@ -15,5 +15,4 @@ urlpatterns = [
     path('evidence/<int:pk>', views.evidenceDetails, name='evidence_detail'),
     path('evidence/new/', views.addEvidence, name='evidence_new'),
     path('evidence/update/<int:pk>', views.updateEvidence, name='evidence_update'),
-    path('celery',views.celery,name='celery')
 ]

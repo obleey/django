@@ -1,0 +1,8 @@
+dodani uporabniki na dan {{ today }}
+
+{% for worker in workers %}
+    Ime: {{ worker.first_name }}
+    Priimek: {{ worker.last_name }}
+    Datum rojstva: {{ worker.date_of_birth }}
+    Številka kartice: {{ worker.card_id }}
+{% endfor %}

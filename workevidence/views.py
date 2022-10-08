@@ -6,8 +6,8 @@ from workevidence.forms import WorkerForm, EvidenceForm
 from workevidence.models import WorkEvidence, Worker
 from django.contrib.auth.decorators import login_required
 from .filters import WorkEvidenceFilter
-
 from .forms import WorkerForm
+from .tasks import send_email_task, sleepy
 
 
 # Create your views here.
@@ -82,9 +82,3 @@ def updateEvidence(request, pk):
 def evidenceDetails(request,pk):
     evidence = get_object_or_404(WorkEvidence, pk=pk)
     return render(request, 'evidence_detail.html', {'evidence': evidence})
-
-   
-def celery(request):
-    today = datetime.datetime.now()
-    today_workers = Worker.objects.filter(created_date__date=today)
-    return HttpResponse(today_workers)
