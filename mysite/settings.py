@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'workevidence'
+    'workevidence',
+    'reversion',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -105,13 +107,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'sl-SI'
 
 TIME_ZONE = 'Europe/Belgrade'
 
 USE_I18N = True
 
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -124,3 +127,13 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = "/"
+LOGOUT_URL = 'logout'
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': "mysite.urls.api_exception_handler"
+}
+

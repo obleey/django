@@ -1,0 +1,52 @@
+{% extends 'registration/base.html'%} {% block content %}
+<div
+  class="d-flex flex-column align-items-center justify-content-center vw-100 vh-100"
+>
+  <div class="w-25">
+    <div class="border-1">
+      <h3 class="text-center">Login</h3>
+      <form method="POST" data-bitwarden-watching="1">
+        {% if form.non_field_errors %}
+        <div class="p-2 border-1 border-danger">
+          {% for error in form.non_field_errors %}
+          <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="form-group py-2">
+          <input
+            class="form-control"
+            type="text"
+            name="username"
+            autofocus=""
+            autocapitalize="none"
+            autocomplete="username"
+            maxlength="150"
+            required=""
+            id="id_username"
+            placeholder="Username"
+          />
+        </div>
+        <div class="form-group py-2">
+          <input
+            name="password"
+            autocomplete="current-password"
+            type="password"
+            class="form-control"
+            id="id_password"
+            placeholder="Password"
+            required=""
+          />
+        </div>
+
+        <div class="my-1">
+          {% csrf_token %}
+          <button class="btn btn-lg btn-primary w-100" type="submit">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

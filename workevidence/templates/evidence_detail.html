@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<div class="d-flex flex-column border-3 border-danger bg-danger">
+  <p class="m-0">{{ evidence.id}}</p>
+  <p class="m-0">{{ evidence.worker.first_name}}</p>
+  <p class="m-0">{{ evidence.worker.last_name}}</p>
+  <p class="m-0">{{ evidence.start_date}}</p>
+  <p class="m-0">{{ evidence.end_date}}</p>
+</div>
+
+{% endblock %}

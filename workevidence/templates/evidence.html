@@ -1,0 +1,64 @@
+{% extends "base.html"%} {% block content %}
+
+<div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Filter</th>
+        <th scope="col">Delavec</th>
+        <th scope="col">Datum in čas prihoda</th>
+        <th scope="col">Datum in čas odhoda</th>
+        <th scope="col">Išči</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <form method="GET">
+          <th scope="row"></th>
+          <td>{{evidence_filter.form.worker}}</td>
+          <td>{{evidence_filter.form.start_date}}</td>
+          <td>{{evidence_filter.form.end_date}}</td>
+          <td>
+            <button class="btn btn-primary">Išči</button>
+          </td>
+        </form>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Številka kartice</th>
+        <th scope="col">Ime</th>
+        <th scope="col">Priimek</th>
+        <th scope="col">Datum prihoda</th>
+        <th scope="col">Čas prihoda</th>
+        <th scope="col">Datum odhoda</th>
+        <th scope="col">Čas odhoda</th>
+        <th scope="col">Skupaj ur</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for evi in evidence %}
+
+      <tr>
+        <th scope="row">{{evi.id}}</th>
+        <td>{{evi.worker.card_id}}</td>
+        <td>{{evi.worker.first_name}}</td>
+        <td>{{evi.worker.last_name}}</td>
+        <td>{{evi.start_date.date}}</td>
+        <td>{{evi.start_date.time}}</td>
+        <td>{{evi.end_date.date}}</td>
+        <td>{{evi.end_date.time}}</td>
+        <td>{{evi.all_time}}</td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%endblock%}

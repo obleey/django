@@ -1,7 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from datetime import time
 from django.utils import timezone
 
 class Worker(models.Model):
@@ -12,14 +10,20 @@ class Worker(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.first_name
+        return f'{self.first_name} {self.last_name}'
 
 
 class WorkEvidence(models.Model):
     worker = models.ForeignKey(Worker,on_delete=models.CASCADE)
     created_date = models.DateTimeField(default=timezone.now)
-    work_date = models.DateTimeField(blank=True, null=True)
- 
+    start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+
+    @property
+    def all_time(self):
+        return self.end_date - self.start_date
+
+
     def __str__(self):
-        return self.worker.first_name
+        return f'{self.id}'
 

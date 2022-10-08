@@ -1,4 +1,3 @@
-from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from workevidence.models import Worker, WorkEvidence
@@ -40,8 +39,8 @@ def addUser(request):
     serializer = WorkerSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
-
+        return Response(serializer.data)
+    return Response(serializer.errors)
 
 @api_view(['GET'])
 def getEvidence(request):
@@ -60,4 +59,5 @@ def addEvidence(request):
     serializer = EvidenceSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-    return Response(serializer.data)
+        return Response(serializer.data)
+    return Response(serializer.errors)

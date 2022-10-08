@@ -1,0 +1,37 @@
+{% extends "base.html"%} {% block content %}
+
+<div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ime</th>
+        <th scope="col">Priimek</th>
+        <th scope="col">Datum rojstva</th>
+        <th scope="col">ID kartice</th>
+        <th scope="col">Urejanje</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for worker in workers %}
+
+      <tr>
+        <th scope="row">{{worker.id}}</th>
+        <td>{{worker.first_name}}</td>
+        <td>{{worker.last_name}}</td>
+        <td>{{worker.date_of_birth}}</td>
+        <td>{{worker.card_id}}</td>
+        <td>
+          <a
+            href="{% url 'worker_update' worker.id%}"
+            class="btn btn-link m-0 p-0"
+            >Uredi</a
+          >
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%endblock%}
