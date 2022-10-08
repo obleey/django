@@ -158,9 +158,9 @@ EMAIL_USE_TLS = True
 #add the port number of the email server
 EMAIL_PORT = 587
 #add your gamil here
-EMAIL_HOST_USER = 'miha.oblishar@gmail.com'
+EMAIL_HOST_USER = 
 #add your password here
-EMAIL_HOST_PASSWORD = 'gybdhrqmlfttbpeq'
+EMAIL_HOST_PASSWORD = 
 DEFAULT_FROM_EMAIL='Celery <support@workevidence.com>'
 
 
